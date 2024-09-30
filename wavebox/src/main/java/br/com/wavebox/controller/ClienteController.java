@@ -19,7 +19,7 @@ public class ClienteController {
     @GetMapping("/novo")
     public String novoCliente(Model model) {
         model.addAttribute("cliente", new Cliente());
-        return "cliente-form"; // O nome do template
+        return "cliente-form"; // Nome do template para o formulário
     }
 
     @PostMapping("/salvar")
@@ -32,7 +32,7 @@ public class ClienteController {
     public String listarClientes(Model model) {
         List<Cliente> clientes = clienteRepository.findAll();
         model.addAttribute("clientes", clientes);
-        return "cliente-lista"; // O nome do template para a lista
+        return "cliente-lista"; // Nome do template para a lista
     }
 
     @GetMapping("/editar/{id}")
