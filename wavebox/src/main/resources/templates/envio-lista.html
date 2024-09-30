@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Envios</title>
+</head>
+<body>
+    <h1>Lista de Envios</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Pedido</th>
+                <th>Endereço</th>
+                <th>Data do Envio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="envio : ${envios}">
+                <td th:text="${envio.idEnvio}"></td>
+                <td th:text="${envio.pedido.idPedido}"></td>
+                <td th:text="${envio.endereco}"></td>
+                <td th:text="${envio.dataEnvio}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/envios/novo">Cadastrar Novo Envio</a>
+</body>
+</html>

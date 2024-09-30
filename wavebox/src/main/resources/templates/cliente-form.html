@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastrar ou Editar Cliente</title>
+</head>
+<body>
+    <h1 th:text="${cliente.idCliente != null} ? 'Editar Cliente' : 'Cadastrar Cliente'"></h1>
+    <form action="#" th:action="@{${cliente.idCliente != null} ? '/clientes/atualizar' : '/clientes/salvar'}" th:object="${cliente}" method="post">
+        <input type="hidden" th:field="*{idCliente}"/> <!-- Campo oculto para o ID do cliente se estiver editando -->
+
+        <label for="nome">Nome:</label>
+        <input type="text" th:field="*{nome}" placeholder="Nome" required/><br/>
+
+        <label for="email">Email:</label>
+        <input type="email" th:field="*{email}" placeholder="Email" required/><br/>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" th:field="*{telefone}" placeholder="Telefone" required/><br/>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" th:field="*{endereco}" placeholder="Endereço" required/><br/>
+
+        <button type="submit" th:text="${cliente.idCliente != null} ? 'Atualizar' : 'Salvar'"></button>
+    </form>
+    <a href="/clientes/listar">Voltar para a lista de clientes</a>
+</body>
+</html>
