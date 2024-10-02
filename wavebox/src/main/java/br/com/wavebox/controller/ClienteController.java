@@ -21,7 +21,18 @@ public class ClienteController {
         model.addAttribute("cliente", new Cliente());
         return "cliente-form"; // Nome do template para o formulário
     }
+    
+    @GetMapping("/cliente-lista")
+    public String salvarcliente(Model model) {
+        model.addAttribute("cliente", new Cliente());
+        return "principal"; // Nome do template para o formulário
+    }
 
+    @GetMapping("/cadastrar-cliente")
+    public String cadastrarcliente(Model model) {
+        model.addAttribute("cliente", new Cliente());
+        return "cadastrar-cliente"; // Nome do template para o formulário
+    }
     @PostMapping("/salvar")
     public String salvarCliente(@ModelAttribute Cliente cliente) {
         clienteRepository.save(cliente);
@@ -48,6 +59,8 @@ public class ClienteController {
         return "redirect:/clientes/listar"; // Redireciona para a lista de clientes
     }
 
+    
+    
     @GetMapping("/deletar/{id}")
     public String deletarCliente(@PathVariable("id") int id) {
         clienteRepository.deleteById(id);
