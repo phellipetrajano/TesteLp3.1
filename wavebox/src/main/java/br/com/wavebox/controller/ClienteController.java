@@ -39,12 +39,12 @@ public class ClienteController {
         return "redirect:/clientes/listar"; // Redireciona para a lista de clientes
     }
 
-    @GetMapping("/listar")
-    public String listarClientes(Model model) {
-        List<Cliente> clientes = clienteRepository.findAll();
-        model.addAttribute("clientes", clientes);
-        return "cliente-lista"; // Nome do template para a lista
-    }
+@GetMapping("/listar")
+public String listarClientes(Model model) {
+    List<Cliente> clientes = clienteRepository.findAll();
+    model.addAttribute("clientes", clientes);
+    return "cliente-lista"; // Nome do template para a lista
+}
 
     @GetMapping("/editar/{id}")
     public String editarCliente(@PathVariable("id") int id, Model model) {

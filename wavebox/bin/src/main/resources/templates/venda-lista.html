@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Vendas</title>
+</head>
+<body>
+    <h1>Lista de Vendas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID do Pedido</th>
+                <th>ID do Produto</th>
+                <th>Quantidade</th>
+                <th>Preço Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="venda : ${vendas}">
+                <td th:text="${venda.idVendas}"></td>
+                <td th:text="${venda.idPedido}"></td>
+                <td th:text="${venda.idProduto}"></td>
+                <td th:text="${venda.quantidade}"></td>
+                <td th:text="${venda.precoTotal}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/vendas/nova">Cadastrar Nova Venda</a>
+</body>
+</html>

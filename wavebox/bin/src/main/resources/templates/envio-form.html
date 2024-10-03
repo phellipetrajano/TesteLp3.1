@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastrar Envio</title>
+</head>
+<body>
+    <h1>Cadastrar Envio</h1>
+    <form action="#" th:action="@{/envios/salvar}" th:object="${envio}" method="post">
+        <label for="pedido">Pedido:</label>
+        <input type="text" th:field="*{pedido.idPedido}" placeholder="ID do Pedido" required/><br/>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" th:field="*{endereco}" placeholder="Endereço" required/><br/>
+
+        <label for="dataEnvio">Data do Envio:</label>
+        <input type="date" th:field="*{dataEnvio}" required/><br/>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

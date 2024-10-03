@@ -34,4 +34,14 @@ public class PromocaoController {
         model.addAttribute("promocoes", promocoes);
         return "promocao-lista"; // Nome do template HTML para a lista
     }
+    
+
+
+
+@GetMapping("/deletar/{id}")
+public String deletarPromocoes(@PathVariable("id") int id) {
+    promocaoRepository.deleteById(id);
+    return "redirect:/promocao-lista"; // Redireciona para a lista de clientes
 }
+}
+

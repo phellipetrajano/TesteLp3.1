@@ -34,4 +34,12 @@ public class ProdutoController {
         model.addAttribute("produtos", produtos);
         return "produto-lista"; // Nome do template HTML para a lista
     }
+    
+
+
+@GetMapping("/deletar/{id}")
+public String deletarProduto(@PathVariable("id") int id) {
+    produtoRepository.deleteById(id);
+    return "redirect:/clientes/listar"; // Redireciona para a lista de clientes
+}
 }

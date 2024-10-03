@@ -6,5 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
-    // Métodos personalizados podem ser adicionados aqui
+
+	static void deleteById(Class<Integer> class1) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

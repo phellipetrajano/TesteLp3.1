@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastrar Pedido</title>
+</head>
+<body>
+    <h1>Cadastrar Pedido</h1>
+    <form action="#" th:action="@{/pedidos/salvar}" th:object="${pedido}" method="post">
+        <label for="cliente">Cliente:</label>
+        <input type="text" th:field="*{cliente.nome}" placeholder="Nome do Cliente" required/><br/>
+
+        <label for="dataPedido">Data do Pedido:</label>
+        <input type="date" th:field="*{dataPedido}" required/><br/>
+
+        <label for="status">Status:</label>
+        <input type="text" th:field="*{status}" placeholder="Status" required/><br/>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

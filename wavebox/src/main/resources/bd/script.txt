@@ -1,0 +1,84 @@
+use wavebox;
+
+CREATE TABLE `categoria` (
+  `idcategoria` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) NOT NULL,
+  `descricao` varchar(45) NOT NULL,
+  `idproduto` int NOT NULL,
+  `codigo_produto` int NOT NULL,
+  `id_promocao` varchar(45) NOT NULL,
+  PRIMARY KEY (`idcategoria`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `clientes` (
+  `cpf` int NOT NULL,
+  `nome` varchar(45) NOT NULL,
+  `endereco` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `telefone` varchar(45) NOT NULL,
+  `idclientes` varchar(45) NOT NULL,
+  PRIMARY KEY (`cpf`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+CREATE TABLE `envio` (
+  `idenvio` int NOT NULL AUTO_INCREMENT,
+  `idpedido` int NOT NULL,
+  `rastreamento` varchar(45) NOT NULL,
+  `metodo_envio` varchar(45) NOT NULL,
+  `data_envio` date NOT NULL,
+  PRIMARY KEY (`idenvio`),
+  KEY `idpedido` (`idpedido`),
+  CONSTRAINT `envio_ibfk_1` FOREIGN KEY (`idpedido`) REFERENCES `pedido` (`idpedido`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+CREATE TABLE `pedido` (
+  `idpedido` int NOT NULL AUTO_INCREMENT,
+  `cpf` int NOT NULL,
+  `dada_pedido` date NOT NULL,
+  `total` int NOT NULL,
+  `idproduto` int NOT NULL,
+  PRIMARY KEY (`idpedido`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `produto` (
+  `idproduto` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) NOT NULL,
+  `idcategoria` int NOT NULL,
+  `descricao` varchar(45) NOT NULL,
+  `preco` double NOT NULL,
+  `estoque` int NOT NULL,
+  `codigo_produto` int NOT NULL,
+  PRIMARY KEY (`idproduto`),
+  KEY `idcategoria` (`idcategoria`),
+  CONSTRAINT `produto_ibfk_1` FOREIGN KEY (`idcategoria`) REFERENCES `categoria` (`idcategoria`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+CREATE TABLE `promocao` (
+  `idpromocao` int NOT NULL AUTO_INCREMENT,
+  `data_inicio` date NOT NULL,
+  `data_fim` date NOT NULL,
+  `tipo_promocao` varchar(45) NOT NULL,
+  PRIMARY KEY (`idpromocao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `vendas` (
+  `idvendas` int NOT NULL AUTO_INCREMENT,
+  `idclientes` int NOT NULL,
+  `data_criacao` date NOT NULL,
+  `itens` varchar(45) NOT NULL,
+  `vendasco` varchar(45) NOT NULL,
+  PRIMARY KEY (`idvendas`),
+  KEY `idclientes` (`idclientes`),
+  CONSTRAINT `vendas_ibfk_1` FOREIGN KEY (`idclientes`) REFERENCES `clientes` (`cpf`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+

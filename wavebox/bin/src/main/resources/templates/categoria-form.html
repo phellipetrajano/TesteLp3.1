@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastrar Categoria</title>
+</head>
+<body>
+    <h1>Cadastrar Categoria</h1>
+    <form action="#" th:action="@{/categorias/salvar}" th:object="${categoria}" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" th:field="*{nome}" placeholder="Nome da Categoria" required/><br/>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

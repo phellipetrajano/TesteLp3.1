@@ -34,4 +34,15 @@ public class CategoriaController {
         model.addAttribute("categorias", categorias);
         return "categoria-lista"; // Nome do template HTML para a lista
     }
+    
+
+
+
+@GetMapping("/deletar/{id}")
+public String deletarCategoria(@PathVariable("id") int id) {
+    categoriaRepository.deleteById(id);
+    return "redirect:/categoria-lista"; // Redireciona para a lista de clientes
 }
+}
+
+

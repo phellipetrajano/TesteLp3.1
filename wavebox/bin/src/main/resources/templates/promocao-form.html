@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastrar Promoção</title>
+</head>
+<body>
+    <h1>Cadastrar Promoção</h1>
+    <form action="#" th:action="@{/promocoes/salvar}" th:object="${promocao}" method="post">
+        <label for="tipoPromocao">Tipo de Promoção:</label>
+        <input type="text" th:field="*{tipoPromocao}" placeholder="Tipo de Promoção" required/><br/>
+
+        <label for="desconto">Desconto:</label>
+        <input type="number" th:field="*{desconto}" placeholder="Desconto" required/><br/>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
